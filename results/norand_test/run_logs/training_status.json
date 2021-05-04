@@ -2,22 +2,22 @@
     "ArcherBehavior": {
         "checkpoints": [
             {
-                "steps": 3590,
-                "file_path": "results/norand_test/ArcherBehavior/ArcherBehavior-3590.onnx",
+                "steps": 50001,
+                "file_path": "results/norand_test/ArcherBehavior/ArcherBehavior-50001.onnx",
                 "reward": -1.0,
-                "creation_time": 1620022068.080207,
+                "creation_time": 1620029465.508666,
                 "auxillary_file_paths": [
-                    "results/norand_test/ArcherBehavior/ArcherBehavior-3590.pt"
+                    "results/norand_test/ArcherBehavior/ArcherBehavior-50001.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 3590,
+            "steps": 50001,
             "file_path": "results/norand_test/ArcherBehavior.onnx",
             "reward": -1.0,
-            "creation_time": 1620022068.080207,
+            "creation_time": 1620029465.508666,
             "auxillary_file_paths": [
-                "results/norand_test/ArcherBehavior/ArcherBehavior-3590.pt"
+                "results/norand_test/ArcherBehavior/ArcherBehavior-50001.pt"
             ]
         }
     },

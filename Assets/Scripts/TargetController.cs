@@ -16,10 +16,10 @@ public class TargetController : MonoBehaviour {
         Vector3 localContact = transform.InverseTransformPoint(contactPt);
         float centerDist = Mathf.Sqrt(localContact.x * localContact.x + localContact.y * localContact.y);
 
-        arrow.SetReward(1f / (1f + (centerDist / 5f)));
+        arrow.SetReward(1f / (1f + (centerDist * 10f)));
+        Debug.Log(1f / (1f + (centerDist * 10f)));
         arrow.EndEpisode();
 
-        Debug.Log("hit at distance!");
         Debug.Log(centerDist);
         Debug.DrawRay(collision.GetContact(0).point, -collision.GetContact(0).normal, Color.white, 30);
     }

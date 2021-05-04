@@ -1,0 +1,38 @@
+{
+    "xpos": {
+        "lesson_num": 0
+    },
+    "windMag": {
+        "lesson_num": 0
+    },
+    "windDir": {
+        "lesson_num": 0
+    },
+    "ArcherBehavior": {
+        "checkpoints": [
+            {
+                "steps": 100003,
+                "file_path": "results/fullmodel/ArcherBehavior/ArcherBehavior-100003.onnx",
+                "reward": -0.6972152349347887,
+                "creation_time": 1620148724.177054,
+                "auxillary_file_paths": [
+                    "results/fullmodel/ArcherBehavior/ArcherBehavior-100003.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 100003,
+            "file_path": "results/fullmodel/ArcherBehavior.onnx",
+            "reward": -0.6972152349347887,
+            "creation_time": 1620148724.177054,
+            "auxillary_file_paths": [
+                "results/fullmodel/ArcherBehavior/ArcherBehavior-100003.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.7.1"
+    }
+}

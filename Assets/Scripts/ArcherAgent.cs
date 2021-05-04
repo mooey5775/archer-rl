@@ -10,10 +10,14 @@ public class ArcherAgent : Agent {
 
     public Transform target;
     public float arrowVelocity = 70f;
+    public float cd = 1.75f;
+    float p = 1.225f;
+    float a = 1.0e-4f;
     bool isFired = false;
     Rigidbody rb;
     Vector3 initialPos;
     Quaternion initialRot;
+    Vector2 wind;
 
     // Start is called before the first frame update
     void Start()
@@ -32,20 +36,25 @@ public class ArcherAgent : Agent {
         rb.velocity = Vector3.zero;
         transform.SetPositionAndRotation(initialPos, initialRot);
 
-        // TODO: randomize location and wind!
+        float xOff = Academy.Instance.EnvironmentParameters.GetWithDefault("xpos", 0.0f);
+        transform.Translate(Vector3.right * xOff);
+
+        float windMag = Academy.Instance.EnvironmentParameters.GetWithDefault("windMag", 0.0f);
+        float windDir = Academy.Instance.EnvironmentParameters.GetWithDefault("windDir", 0.0f);
+
+        wind = new Vector2(windMag * Mathf.Cos(windDir), windMag * Mathf.Sin(windDir));
 
         RequestDecision();
     }
 
     public override void CollectObservations(VectorSensor sensor) {
         // Arrow location relative to target (2)
-        sensor.AddObservation(transform.localPosition.x - target.localPosition.x);
-        sensor.AddObservation(transform.localPosition.z - target.localPosition.z);
+        sensor.AddObservation(transform.localPosition.x / 10f);
+        // sensor.AddObservation(transform.localPosition.z - target.localPosition.z);
 
         // Wind vector (2)
-        // TODO: add wind!
-        sensor.AddObservation(0f);
-        sensor.AddObservation(0f);
+        sensor.AddObservation(wind.x / 6f);
+        sensor.AddObservation(wind.y / 6f);
     }
 
     public override void OnActionReceived(ActionBuffers actions) {
@@ -72,7 +81,7 @@ public class ArcherAgent : Agent {
 
     public override void Heuristic(in ActionBuffers actionsOut) {
         var continuousActionsOut = actionsOut.ContinuousActions;
-        continuousActionsOut[0] = -0.195f;
+        continuousActionsOut[0] = -0.22f;
         continuousActionsOut[1] = 0f;
     }
 
@@ -83,11 +92,32 @@ public class ArcherAgent : Agent {
             transform.rotation = Quaternion.LookRotation(rb.velocity);
 
         // Stop if under floor
-        if (transform.localPosition.y < 0f) {
+        if (transform.localPosition.y < 0f || transform.localPosition.z < -40f) {
             SetReward(-1f);
             EndEpisode();
         }
 
-        // TODO: wind force!
+        if (transform.localPosition.x < -10f || transform.localPosition.x > 10f) {
+            //SetReward(-0.75f);
+            SetReward(-1f);
+            EndEpisode();
+        }
+
+        if (transform.localPosition.z > 40f) {
+            //SetReward(-0.5f);
+            SetReward(-1f);
+            EndEpisode();
+        }
+
+        // wind force!
+        Vector2 arrowVel = new Vector2(rb.velocity.x, rb.velocity.z);
+        Vector2 airRelVel = arrowVel - wind;
+        // Debug.Log(airRelVel);
+        float v = airRelVel.magnitude;
+
+        float forceAmt = (p * v * v * cd * a) / 2;
+        Vector2 airRes = -airRelVel.normalized * forceAmt;
+        // Debug.Log(airRes);
+        rb.AddForce(new Vector3(airRes.x, 0f, airRes.y));
     }
 }

@@ -1,0 +1,47 @@
+{
+    "xpos": {
+        "lesson_num": 0
+    },
+    "windMag": {
+        "lesson_num": 0
+    },
+    "windDir": {
+        "lesson_num": 0
+    },
+    "ArcherBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499999,
+                "file_path": "results/fullmodel_simplereward/ArcherBehavior/ArcherBehavior-499999.onnx",
+                "reward": -0.9893268982680359,
+                "creation_time": 1620155140.377697,
+                "auxillary_file_paths": [
+                    "results/fullmodel_simplereward/ArcherBehavior/ArcherBehavior-499999.pt"
+                ]
+            },
+            {
+                "steps": 783142,
+                "file_path": "results/fullmodel_simplereward/ArcherBehavior/ArcherBehavior-783142.onnx",
+                "reward": -0.9904012794487186,
+                "creation_time": 1620157643.4828422,
+                "auxillary_file_paths": [
+                    "results/fullmodel_simplereward/ArcherBehavior/ArcherBehavior-783142.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 783142,
+            "file_path": "results/fullmodel_simplereward/ArcherBehavior.onnx",
+            "reward": -0.9904012794487186,
+            "creation_time": 1620157643.4828422,
+            "auxillary_file_paths": [
+                "results/fullmodel_simplereward/ArcherBehavior/ArcherBehavior-783142.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.7.1"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "ArcherBehavior": {
+        "checkpoints": [
+            {
+                "steps": 42774,
+                "file_path": "results/highlr/ArcherBehavior/ArcherBehavior-42774.onnx",
+                "reward": 0.00160483385317892,
+                "creation_time": 1620143573.479997,
+                "auxillary_file_paths": [
+                    "results/highlr/ArcherBehavior/ArcherBehavior-42774.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 42774,
+            "file_path": "results/highlr/ArcherBehavior.onnx",
+            "reward": 0.00160483385317892,
+            "creation_time": 1620143573.479997,
+            "auxillary_file_paths": [
+                "results/highlr/ArcherBehavior/ArcherBehavior-42774.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.7.1"
+    }
+}
